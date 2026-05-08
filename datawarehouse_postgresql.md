@@ -4,7 +4,7 @@
 
 # AIM
 
-To design and implement a real-time E-Commerce Sales Analytics Data Warehouse using PostgreSQL for storing, processing, and analyzing transactional sales data efficiently.
+To design and implement a real-time E-Commerce Sales Analytics Data Warehouse using PostgreSQL command line tools for storing and analyzing sales transactions efficiently.
 
 ---
 
@@ -18,62 +18,102 @@ To design and implement a real-time E-Commerce Sales Analytics Data Warehouse us
 
 ## Software Requirements
 
-- Operating System : Windows / Linux
+- Windows / Linux Operating System
 - PostgreSQL
-- pgAdmin 4
+- Command Prompt (CMD)
 - SQL Shell (psql)
 
 ---
 
 # REAL-TIME APPLICATION
 
-This project is designed for a real-time E-Commerce Sales Analytics application where customer orders, product details, and transaction data are continuously collected and analyzed for business reporting and decision-making.
-
-Examples:
-- Amazon Sales Analysis
-- Flipkart Product Analytics
-- Online Order Monitoring
-- Customer Purchase Tracking
+This project is developed for a real-time E-Commerce Sales Analytics system where customer purchases, product transactions, and sales reports are analyzed continuously using PostgreSQL Data Warehouse architecture.
 
 ---
 
 # ALGORITHM
 
 ## Step 1
-Install PostgreSQL and pgAdmin software on the system to create and manage the database environment required for the data warehouse application.
+Install PostgreSQL software in the system and configure the PostgreSQL server with username, password, and default port settings properly.
 
 ## Step 2
-Open pgAdmin and create a new database named `realtime_dw` for storing the warehouse data and analytical information.
+Open Command Prompt and access PostgreSQL SQL Shell using the `psql` command to establish database connectivity.
 
 ## Step 3
-Design dimension tables such as customer, product, and time tables to store descriptive and categorized information separately.
+Create a new database named `realtime_dw` for storing real-time warehouse data and analytical transaction records.
 
 ## Step 4
-Create the fact table named `fact_sales` to store transactional sales records along with foreign key relationships.
+Connect to the created database using PostgreSQL command line interface to begin the warehouse implementation process.
 
 ## Step 5
-Define primary keys and foreign keys properly to maintain data integrity and establish relationships between tables.
+Create dimension tables such as customer, product, and time tables to organize descriptive analytical data efficiently.
 
 ## Step 6
-Insert sample customer information into the customer dimension table for maintaining customer-related analytical data.
+Create the sales fact table to store real-time transactional information with proper foreign key relationships.
 
 ## Step 7
-Insert product details such as product name, category, and price into the product dimension table for product analytics.
+Insert customer information into the customer dimension table for maintaining customer-based analytical records.
 
 ## Step 8
-Store date and time information inside the time dimension table to perform monthly and yearly sales analysis efficiently.
+Insert product details and pricing information into the product dimension table for product sales analysis.
 
 ## Step 9
-Insert transactional sales data into the fact table by connecting customer, product, and time dimension references together.
+Insert time-based information into the time dimension table to support monthly and yearly business analytics.
 
 ## Step 10
-Execute SQL analytical queries using JOIN operations to retrieve meaningful reports from the warehouse environment.
+Insert transactional sales records into the fact table by connecting all dimension references together properly.
 
 ## Step 11
-Analyze the generated output to understand customer purchases, product performance, and total sales generated in real time.
+Execute SQL JOIN queries from the command line interface to generate real-time analytical reports from the warehouse.
 
 ## Step 12
-Verify the successful implementation of the real-time data warehouse system using PostgreSQL analytical queries and reporting.
+Verify the output and confirm the successful implementation of the PostgreSQL real-time data warehouse application.
+
+---
+
+# SETUP PROCEDURE USING CMD
+
+## Step 1 : Open CMD
+
+Press:
+
+```text
+Windows + R
+```
+
+Type:
+
+```text
+cmd
+```
+
+---
+
+## Step 2 : Open PostgreSQL SQL Shell
+
+Type:
+
+```text
+psql -U postgres
+```
+
+Enter password.
+
+---
+
+## Step 3 : Create Database
+
+```sql
+CREATE DATABASE realtime_dw;
+```
+
+---
+
+## Step 4 : Connect Database
+
+```sql
+\c realtime_dw
+```
 
 ---
 
@@ -104,7 +144,7 @@ CREATE TABLE dim_time (
     year INT
 );
 
--- Create Sales Fact Table
+-- Create Fact Table
 CREATE TABLE fact_sales (
     sales_id SERIAL PRIMARY KEY,
     customer_id INT REFERENCES dim_customer(customer_id),
@@ -138,7 +178,7 @@ VALUES
 (1, 1, 1, 2, 110000),
 (2, 2, 2, 1, 20000);
 
--- Analytical Query
+-- Display Analytical Report
 SELECT
     c.customer_name,
     p.product_name,
@@ -158,13 +198,15 @@ ON f.time_id = t.time_id;
 
 # OUTPUT
 
-| customer_name | product_name | order_date | quantity | total_amount |
-|----------------|--------------|-------------|------------|---------------|
-| Arun | Laptop | 2026-05-08 | 2 | 110000 |
-| Kumar | Mobile | 2026-05-09 | 1 | 20000 |
+```text
+ customer_name | product_name | order_date | quantity | total_amount
+---------------+--------------+-------------+----------+--------------
+ Arun          | Laptop       | 2026-05-08  |    2     |   110000
+ Kumar         | Mobile       | 2026-05-09  |    1     |    20000
+```
 
 ---
 
 # RESULT
 
-Thus, the real-time E-Commerce Sales Analytics Data Warehouse was successfully designed and implemented using PostgreSQL. The warehouse system efficiently stored and analyzed customer, product, and transactional sales data for real-time business reporting and analytics.
+Thus, the real-time E-Commerce Sales Analytics Data Warehouse was successfully designed and implemented using PostgreSQL command line tools. The warehouse system efficiently stored and analyzed transactional sales data for real-time reporting and business analytics.
